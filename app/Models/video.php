@@ -9,4 +9,14 @@ class video extends Model
 {
     use HasFactory;
     protected $fillable = ['name','episode','api','anime_id'];
+
+    /**
+     * Get the user that owns the video
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function anime()
+    {
+        return $this->belongsTo(anime::class, 'anime_id', 'id');
+    }
 }
