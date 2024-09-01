@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.poppins {
+  font-family: "Poppins", system-ui;
+}
+
+.radio-canada {
+  font-family: "Radio Canada Big", sans-serif;
+}
+.inter {
+  font-family: "Inter", sans-serif;
+}
+
+.ham-active-1 {
+  @apply absolute rotate-45 top-1/2;
+}
+.ham-active-2 {
+  @apply absolute -rotate-45 top-1/2;
+}
+
+.show-animate {
+  animation: show 0.7s ease-in-out forwards;
+}
+
+.sidebar-animate {
+  animation: sidebar 0.7s ease-in-out forwards;
+}
+@keyframes sidebar {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes show {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hidden-animate {
+  animation: hidden 0.5s ease-in-out forwards;
+}
+@keyframes hidden {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
