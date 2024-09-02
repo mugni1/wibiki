@@ -5,8 +5,8 @@
 
     {{-- SECTION OF BTN ADD ANIME AND SHOW TRAHSHED --}}
     <section class=" px-5 w-full mx-auto flex justify-between my-5 mt-28 md:mt-5">
-        <a class=" flex justify-center items-center py-2 px-3 bg-emerald-500 text-white rounded-full hover:bg-emerald-700 shadow-md" href="/dashboard/anime-add">
-            <span class=" font-semibold"> Add New Anime</span>
+        <a class=" flex justify-center items-center py-2 px-3 bg-emerald-500 text-white rounded-full hover:bg-emerald-700 shadow-md" href="/dashboard/episode-add">
+            <span class=" font-semibold"> Add New Episode</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=" mx-2 h-5 w-5 fill-current">
                 <path d="M6 22h12a2 2 0 0 0 2-2V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2zm7-18 5 5h-5V4zM8 14h3v-3h2v3h3v2h-3v3h-2v-3H8v-2z"></path>
             </svg>
@@ -38,18 +38,18 @@
         {{-- TABLE --}}
         <table class=" w-full me-5 shadow-md">
             <tr>
-                <th class=" border w-7/12 md:w-2/12 py-2">Name</th>
-                <th class=" border w-7/12 md:w-1/12 py-2">Episode</th>
-                <th class=" border w-7/12 md:w-3/12 py-2">Link</th>
-                <th class=" border w-7/12 md:w-3/12 py-2">Anime</th>
-                <th class=" border w-5/12 md:w-3/12" colspan="3"><span class="hidden md:block">Edit / Delete / Read</span><span class="block md:hidden">Action</span></th>
+                <th class=" border w-3/12 md:w-2/12 py-2">Anime</th>
+                <th class=" border w-1/12 md:w-1/12 py-2">Episode</th>
+                <th class=" border hidden md:table-cell md:w-3/12 py-2">Link</th>
+                <th class=" border hidden md:table-cell md:w-3/12 py-2">Nama Episode</th>
+                <th class=" border w-9/12 md:w-3/12" colspan="3"><span class="hidden md:block">Edit / Delete / Read</span><span class="block md:hidden">Action</span></th>
             </tr>
             @foreach ($videos as $video)
             <tr>
-                <td class=" border px-5">{{ $video->name }}</td>
+                <td class=" border px-5">{{ $video->anime->name }}</td>
                 <td class=" border px-5 text-center">{{ $video->episode }}</td>
-                <td class=" border px-5"><a class="cursor-pointer" href="{{ $video->api }}">{{ $video->api }}</a></td>
-                <td class=" border px-5"><a class="cursor-pointer" href="{{ $video->api }}">{{ $video->anime->name}}</a></td>
+                <td class=" border hidden md:table-cell px-5"><a class="cursor-pointer" href="{{ $video->api }}">{{ $video->api }}</a></td>
+                <td class=" border hidden md:table-cell px-5"><a class="cursor-pointer" href="{{ $video->api }}">{{ $video->name}}</a></td>
                 <td class=" border ">
                     <a href="/video-edit/{{ $video->id }}" class=" w-9/12 mx-auto flex justify-center py-2 bg-yellow-500 rounded-md text-white my-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=" fill-current h-5 w-5 ">
@@ -66,7 +66,7 @@
                     </a>
                 </td>
                 <td class=" border ">
-                    <a href="/dashboard/video-detail/{{ $video->id }}" class=" w-9/12 mx-auto flex justify-center py-2 bg-sky-500 rounded-md text-white my-2">
+                    <a href="/dashboard/anime-detail/{{ $video->anime->id }}" class=" w-9/12 mx-auto flex justify-center py-2 bg-sky-500 rounded-md text-white my-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=" fill-current h-5 w-5 ">
                             <path d="M12 5c-7.633 0-9.927 6.617-9.948 6.684L1.946 12l.105.316C2.073 12.383 4.367 19 12 19s9.927-6.617 9.948-6.684l.106-.316-.105-.316C21.927 11.617 19.633 5 12 5zm0 11c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"></path>
                             <path d="M12 10c-1.084 0-2 .916-2 2s.916 2 2 2 2-.916 2-2-.916-2-2-2z"></path>
