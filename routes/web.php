@@ -19,6 +19,11 @@ Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth'
 Route::get('/dashboard/daftar-anime',[DashboardController::class,'daftarAnime'])->middleware('auth');
 //show-detail-anime
 Route::get('/dashboard/anime-detail/{id}',[DashboardController::class,'showAnime']);
+//add-anime
+Route::get('/dashboard/anime-add',[DashboardController::class,'createAnime']);
+//store-anime
+Route::post('/dashboard/anime-add/store',[DashboardController::class,'storeAnime']);
+
 
 //Dashboard Episode
 Route::get('/dashboard/daftar-episode',[DashboardController::class,'daftarEpisode']);

@@ -5,7 +5,7 @@
     <section class="w-full px-5 py-5 flex flex-wrap mt-28 md:mt-5">
         {{-- gambar --}}
         <div class=" w-full pb-5 md:w-4/12 flex items-center justify-start">
-            <img class=" w-full md:w-10/12 rounded-lg shadow-lg" src="{{ asset('img/Wind-Breaker.jpg') }}" alt="">
+            <img class=" w-full md:w-10/12 rounded-lg shadow-lg" src="{{ asset('storage/img/' . $anime->image) }}" alt="">
         </div>
         {{-- deskripsi --}}
         <div class=" w-full md:w-8/12 text-base text-justify">

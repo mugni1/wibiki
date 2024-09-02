@@ -13,7 +13,8 @@ class anime extends Model
         'status',
         'studio',
         'producer',
-        'description'
+        'description',
+        'image',
     ];
 
     /**

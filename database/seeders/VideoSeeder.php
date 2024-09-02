@@ -19,6 +19,6 @@ class VideoSeeder extends Seeder
          video::truncate();
          Schema::enableForeignKeyConstraints();
 
-         video::factory(20)->create();
+         video::factory(200)->create();
     }
 }

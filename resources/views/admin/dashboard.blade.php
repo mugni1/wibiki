@@ -13,7 +13,7 @@
         {{-- endcard --}}
         {{-- card --}}
         <div class=" w-4/12 flex flex-wrap items-center px-5 py-2 shadow-md rounded-xl border bg-purple-600">
-            <h1 class="w-full text-xl font-bold text-white">1182</h1>
+            <h1 class="w-full text-xl font-bold text-white">{{ $videos->total() }}</h1>
             <h1 class=" w-full text-slate-200">Episode</h1>
         </div>
         {{-- endcard --}}

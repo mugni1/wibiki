@@ -33,6 +33,18 @@
     </section>
     {{--END SECTION SEARCH ANIME --}}
 
+    {{-- SESSION FLASH SUCCES--}}
+    @if(Session::has('status'))
+    <section class="px-5 w-full mx-auto pb-5">
+        <div id="notif-succes" class=" w-full mx-auto border-2 bg-green-500 border-green-700 py-3 px-5 rounded-md text-white flex show-animate">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class=" fill-current me-2">
+                <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-1.999 14.413-3.713-3.705L7.7 11.292l2.299 2.295 5.294-5.294 1.414 1.414-6.706 6.706z"></path>
+            </svg> {{ Session::get('pesan') }}
+        </div>
+    </section>
+    @endif
+    {{-- END SESSION FLASH SUCCES --}}
+
     {{-- Section of Table Anime --}}
     <section class="px-5 w-full pb-5">
         {{-- TABLE --}}
