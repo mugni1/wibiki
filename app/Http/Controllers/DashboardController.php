@@ -7,6 +7,7 @@ use App\Models\anime;
 use App\Models\video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class DashboardController extends Controller
 {
@@ -59,6 +60,36 @@ class DashboardController extends Controller
         //redirect ke dashboard daftar anime
        return redirect('/dashboard/daftar-anime');
     }
+
+    //edit-ANIME
+    public function editAnime($id){
+        $anime = anime::findOrFail($id);
+        return view('admin.anime-edit',['title'=>'Edit Anime','anime'=>$anime]);
+    }
+    //update-ANIME
+    public function updateAnime(Request $request,$id){
+        $nameImage = $request->imagebawaan;
+
+        if ($request->file('image')) {
+            $ekstensiFile = $request->file('image')->getClientOriginalExtension();
+            $nameAnime = strtolower(str_replace(' ','', $request->name));
+            $nameImage = $nameAnime . '-' . now()->timestamp . '.' . $ekstensiFile;
+            $request->file('image')->storeAs('img', $nameImage);
+        }
+
+        $dataAnime = $request->all();
+        $dataAnime['image'] = $nameImage;
+
+        $update = anime::findOrFail($id)->update($dataAnime);
+
+        if ($update) {
+           Session::flash('status','success');
+           Session::flash('pesan',"Berhasil Update : $request->name");
+        }
+
+        return redirect('/dashboard/daftar-anime');
+    }
+
     //delete-ANIME
     public function dropAnime(Request $request,$id){
         $drop = anime::findOrFail($id)->delete();

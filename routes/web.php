@@ -17,12 +17,19 @@ Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth'
 
 // Dashboard Anime
 Route::get('/dashboard/daftar-anime',[DashboardController::class,'daftarAnime'])->middleware('auth');
+
 //show-detail-anime
 Route::get('/dashboard/anime-detail/{id}',[DashboardController::class,'showAnime']);
 //add-anime
 Route::get('/dashboard/anime-add',[DashboardController::class,'createAnime']);
 //store-anime
 Route::post('/dashboard/anime-add/store',[DashboardController::class,'storeAnime']);
+
+//edit ANIME
+Route::get('/dashboard/anime-edit/{id}',[DashboardController::class,'editAnime']);
+//update-ANIME
+Route::put('/dashboard/anime-update/{id}',[DashboardController::class,'updateAnime']);
+
 //delete-anime
 Route::delete('/dashboard/anime-delete/{id}',[DashboardController::class,'dropAnime']);
 
