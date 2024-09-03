@@ -36,6 +36,12 @@ Route::get('/dashboard/daftar-episode',[DashboardController::class,'daftarEpisod
 Route::get('/dashboard/episode-add',[DashboardController::class,'createEpisode']);
 //episode-STORE
 Route::post('/dashboard/episode-add/store',[DashboardController::class,'storeEpisode']);
+//episode-EDIT
+Route::get('/dashboard/episode-edit/{id}',[DashboardController::class,'editEpisode']);
+//episode-UPDATE
+Route::put('/dashboard/episode-update/{id}',[DashboardController::class,'updateEpisode']);
+
+
 //episode-DELETE
 Route::delete('/dashboard/video-delete/{id}',[DashboardController::class,'dropEpisode']);
 

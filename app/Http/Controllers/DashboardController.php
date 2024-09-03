@@ -112,7 +112,7 @@ class DashboardController extends Controller
          $animes = anime::get(['id','name']);
          return view('admin.episode-add',['title'=>'Add New Episode','animes'=>$animes]);
     }
-    //EPISODE-STORE
+    //EPISODE-edit
     public function storeEpisode(Request $request){
         $store = video::create($request->all());
         if ($store) {
@@ -122,6 +122,24 @@ class DashboardController extends Controller
         
         return redirect('/dashboard/daftar-anime');
     }
+    //EPISODE-edit
+    public function editEpisode($id){
+        $video = video::findOrFail($id);
+        $animes = anime::get(['id','name']);
+        return view('admin.episode-edit',['title'=>'Edit Episode','video'=>$video,'animes'=>$animes]);
+    }
+    //EPISODE-update
+    public function updateEpisode(Request $request,$id){
+        $video = video::findOrFail($id)->update($request->all());
+        
+        if ($video) {
+            Session::flash('status','success');
+            Session::flash('pesan',"Berhasil Update : $request->name");
+        }
+
+        return redirect('/dashboard/daftar-episode');
+    }
+
     //EPISODE DELETE 
     public function dropEpisode(Request $request ,$id){
         $drop = video::findOrFail($id)->delete();
