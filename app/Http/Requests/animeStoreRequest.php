@@ -11,7 +11,7 @@ class animeStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class animeStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'required'
+            'name'=>'required',
+            'studio'=>'required',
+            'producer'=>'required',
+            'status' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'description' => 'required'
         ];
     }
 }

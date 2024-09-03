@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\animeStoreRequest;
 use App\Models\anime;
 use App\Models\video;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class DashboardController extends Controller
         return view('admin.anime-add',['title'=>"Add New Anime"]);
     }
     //store-ANIME
-    public function storeAnime(Request $request){
+    public function storeAnime(animeStoreRequest $request){
         //default nameImage kosong
         $nameImage=null;
 
@@ -58,8 +59,18 @@ class DashboardController extends Controller
         //redirect ke dashboard daftar anime
        return redirect('/dashboard/daftar-anime');
     }
+    //delete-ANIME
+    public function dropAnime(Request $request,$id){
+        $drop = anime::findOrFail($id)->delete();
+        if ($drop) {
+            Session::flash('status','success');
+            Session::flash('pesan',"Berhasil Menghapus Anime : $request->name");
+        }
+        //redirect
+        return redirect('/dashboard/daftar-anime');
+    }
 
-
+    //SHOW EPISODE
     public function daftarEpisode(){
          $videos = video::with('anime')->paginate(10);
          return view('admin.daftar-episode',['title'=>'Daftar Episode','videos'=>$videos]);

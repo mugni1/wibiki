@@ -23,7 +23,8 @@ Route::get('/dashboard/anime-detail/{id}',[DashboardController::class,'showAnime
 Route::get('/dashboard/anime-add',[DashboardController::class,'createAnime']);
 //store-anime
 Route::post('/dashboard/anime-add/store',[DashboardController::class,'storeAnime']);
-
+//delete-anime
+Route::delete('/dashboard/anime-delete/{id}',[DashboardController::class,'dropAnime']);
 
 //Dashboard Episode
 Route::get('/dashboard/daftar-episode',[DashboardController::class,'daftarEpisode']);
