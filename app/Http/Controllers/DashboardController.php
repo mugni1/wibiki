@@ -19,8 +19,10 @@ class DashboardController extends Controller
     }
 
     // ANIME
-    public  function daftarAnime(){
-        $animes = anime::orderBy('id','DESC')->paginate(10);
+    public  function daftarAnime(Request $request){
+        $keyword = $request->keywords;
+        
+        $animes = anime::orderBy('id','DESC')->where('name','LIKE','%'.$keyword.'%')->orWhere('status','LIKE','%'.$keyword.'%')->paginate(10);
         return view('admin.daftar-anime',['title'=>'Daftar Anime','animes'=>$animes]);
     }
     // Show ANIME
