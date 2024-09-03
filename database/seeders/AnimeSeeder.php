@@ -19,6 +19,6 @@ class AnimeSeeder extends Seeder
            anime::truncate();
            Schema::enableForeignKeyConstraints();
            
-        anime::factory(100)->create();
+        anime::factory(10)->create();
     }
 }

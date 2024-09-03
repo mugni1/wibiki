@@ -23,6 +23,7 @@ class animeFactory extends Factory
             "studio"=>fake()->company(),
             "producer"=>fake()->name(),
             "description"=>fake()->paragraph(20),
+            "image" => fake()->url(),
         ];
 
     }

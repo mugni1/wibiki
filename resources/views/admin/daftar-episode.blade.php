@@ -46,12 +46,16 @@
             </tr>
             @foreach ($videos as $video)
             <tr>
+                @if($video->anime == null)
+                <td class=" border px-5">Belum Ada anime</td>
+                @else
                 <td class=" border px-5">{{ $video->anime->name }}</td>
+                @endif
                 <td class=" border px-5 text-center">{{ $video->episode }}</td>
                 <td class=" border hidden md:table-cell px-5"><a class="cursor-pointer" href="{{ $video->api }}">{{ $video->api }}</a></td>
                 <td class=" border hidden md:table-cell px-5"><a class="cursor-pointer" href="{{ $video->api }}">{{ $video->name}}</a></td>
                 <td class=" border ">
-                    <a href="/video-edit/{{ $video->id }}" class=" w-9/12 mx-auto flex justify-center py-2 bg-yellow-500 rounded-md text-white my-2">
+                    <a href="/dashboard/video-edit/{{ $video->id }}" class=" w-9/12 mx-auto flex justify-center py-2 bg-yellow-500 rounded-md text-white my-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=" fill-current h-5 w-5 ">
                             <path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path>
                             <path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path>
@@ -59,12 +63,22 @@
                     </a>
                 </td>
                 <td class=" border ">
-                    <a href="/video-delete/{{ $video->id }}" class=" w-9/12 mx-auto flex justify-center py-2 bg-red-500 rounded-md text-white my-2">
+                    <a href="/dashboard/video-delete/{{ $video->id }}" class=" w-9/12 mx-auto flex justify-center py-2 bg-red-500 rounded-md text-white my-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=" fill-current h-5 w-5 ">
                             <path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"></path>
                         </svg>
                     </a>
                 </td>
+                @if($video->anime == null)
+                <td class=" border ">
+                    <a href="/dashboard/video-edit/{{ $video->id }}" class=" w-9/12 mx-auto flex justify-center py-2 bg-sky-500 rounded-md text-white my-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=" fill-current h-5 w-5 ">
+                            <path d="M12 5c-7.633 0-9.927 6.617-9.948 6.684L1.946 12l.105.316C2.073 12.383 4.367 19 12 19s9.927-6.617 9.948-6.684l.106-.316-.105-.316C21.927 11.617 19.633 5 12 5zm0 11c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z"></path>
+                            <path d="M12 10c-1.084 0-2 .916-2 2s.916 2 2 2 2-.916 2-2-.916-2-2-2z"></path>
+                        </svg>
+                    </a>
+                </td>
+                @else
                 <td class=" border ">
                     <a href="/dashboard/anime-detail/{{ $video->anime->id }}" class=" w-9/12 mx-auto flex justify-center py-2 bg-sky-500 rounded-md text-white my-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=" fill-current h-5 w-5 ">
@@ -73,6 +87,7 @@
                         </svg>
                     </a>
                 </td>
+                @endif
             </tr>
             @endforeach
         </table>

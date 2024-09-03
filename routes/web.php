@@ -15,26 +15,27 @@ Route::get('/logout',[AuthController::class,'logout']);
 //DASHBOARD KHUSUS ADMIN
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth');
 
-// Dashboard Anime
+// ANIMEEEEEEEEEEEEEEEEEEE
 Route::get('/dashboard/daftar-anime',[DashboardController::class,'daftarAnime'])->middleware('auth');
-
-//show-detail-anime
+//show-detail-ANIME
 Route::get('/dashboard/anime-detail/{id}',[DashboardController::class,'showAnime']);
-//add-anime
+//add-ANIME
 Route::get('/dashboard/anime-add',[DashboardController::class,'createAnime']);
-//store-anime
+//store-ANIME
 Route::post('/dashboard/anime-add/store',[DashboardController::class,'storeAnime']);
-
 //edit ANIME
 Route::get('/dashboard/anime-edit/{id}',[DashboardController::class,'editAnime']);
 //update-ANIME
 Route::put('/dashboard/anime-update/{id}',[DashboardController::class,'updateAnime']);
-
-//delete-anime
+//delete-ANIME
 Route::delete('/dashboard/anime-delete/{id}',[DashboardController::class,'dropAnime']);
 
-//Dashboard Episode
+//EPISODEEEEEEEEEEEEEEEEEE
 Route::get('/dashboard/daftar-episode',[DashboardController::class,'daftarEpisode']);
+//episode-ADD
+Route::get('/dashboard/episode-add',[DashboardController::class,'createEpisode']);
+//episode-STORE
+Route::post('/dashboard/episode-add/store',[DashboardController::class,'storeEpisode']);
 
 
 //HALAMAN UNTUK SEMUA USER
