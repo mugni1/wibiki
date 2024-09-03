@@ -7,6 +7,7 @@ use App\Models\anime;
 use App\Models\video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use PhpParser\Node\Expr\FuncCall;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class DashboardController extends Controller
@@ -120,5 +121,15 @@ class DashboardController extends Controller
         }
         
         return redirect('/dashboard/daftar-anime');
+    }
+    //EPISODE DELETE 
+    public function dropEpisode(Request $request ,$id){
+        $drop = video::findOrFail($id)->delete();
+        if ($drop) {
+            Session::flash('status','success');
+            Session::flash('pesan',"Berhasil menghapus episode : $request->name");
+        }
+
+        return redirect('/dashboard/daftar-episode');
     }
 }

@@ -33,6 +33,18 @@
     </section>
     {{--END SECTION SEARCH ANIME --}}
 
+    {{-- SESSION FLASH SUCCES--}}
+    @if(Session::has('status'))
+    <section class="px-5 w-full mx-auto pb-5">
+        <div id="notif-succes" class=" w-full mx-auto border-2 bg-green-500 border-green-700 py-3 px-5 rounded-md text-white flex show-animate">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class=" fill-current me-2">
+                <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm-1.999 14.413-3.713-3.705L7.7 11.292l2.299 2.295 5.294-5.294 1.414 1.414-6.706 6.706z"></path>
+            </svg> {{ Session::get('pesan') }}
+        </div>
+    </section>
+    @endif
+    {{-- END SESSION FLASH SUCCES --}}
+
     {{-- Section of Table Anime --}}
     <section class="px-5 w-full pb-5">
         {{-- TABLE --}}
@@ -63,11 +75,16 @@
                     </a>
                 </td>
                 <td class=" border ">
-                    <a href="/dashboard/video-delete/{{ $video->id }}" class=" w-9/12 mx-auto flex justify-center py-2 bg-red-500 rounded-md text-white my-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=" fill-current h-5 w-5 ">
-                            <path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"></path>
-                        </svg>
-                    </a>
+                    <form action="/dashboard/video-delete/{{ $video->id }}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <input type="hidden" name="name" value="{{ $video->name }}">
+                        <button onclick="return confirm('Apakah anda yakin ingin menghapus')" class=" w-9/12 mx-auto flex justify-center py-2 bg-red-500 rounded-md text-white my-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class=" fill-current h-5 w-5 ">
+                                <path d="M6 7H5v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7H6zm4 12H8v-9h2v9zm6 0h-2v-9h2v9zm.618-15L15 2H9L7.382 4H3v2h18V4z"></path>
+                            </svg>
+                        </button>
+                    </form>
                 </td>
                 @if($video->anime == null)
                 <td class=" border ">
