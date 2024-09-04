@@ -52,7 +52,7 @@
         <ul class=" w-full md:w-1/2 text-white">
             @foreach ($anime->videos as $episode)
             <li class=" py-1 w-full">
-                <a class=" w-full py-2 px-2 rounded-md bg-green-600 flex items-center justify-between" href="{{ $episode->api }}">
+                <a class=" w-full py-2 px-2 rounded-md bg-green-600 flex items-center justify-between" href="/dashboard/episode-detail/{{ $episode->id }}">
                     <span>
                         Episode-{{ $episode->episode }} | {{ $episode->name }}
                     </span>
