@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -48,6 +49,7 @@ Route::put('/dashboard/episode-update/{id}',[DashboardController::class,'updateE
 Route::delete('/dashboard/video-delete/{id}',[DashboardController::class,'dropEpisode'])->middleware('auth');
 
 //HALAMAN UNTUK SEMUA USER
-Route::get('/',function (){
-    return view('index',['title'=>'Beranda']);
-});
+Route::get('/',[HomeController::class,'index']);
+
+//ANIME-DETAIL
+Route::get('/anime-detail/{id}',[HomeController::class,'show']);
