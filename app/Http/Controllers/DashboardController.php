@@ -108,10 +108,15 @@ class DashboardController extends Controller
     }
 
 
-    // EPISODE-SHOW
+    // EPISODE
     public function daftarEpisode(){
          $videos = video::with('anime')->paginate(10);
          return view('admin.daftar-episode',['title'=>'Daftar Episode','videos'=>$videos]);
+    }
+    // EPISODE-SHOW
+    public function showEpisode($id){
+        $video = video::with('anime')->findOrFail($id);
+        return view('admin.episode-detail',['title'=>'Detail Episode','video'=>$video]);
     }
     // EPISODE-ADD
     public function createEpisode(){
