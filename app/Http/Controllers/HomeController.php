@@ -18,4 +18,9 @@ class HomeController extends Controller
         $anime = anime::with('videos')->findOrFail($id);
         return view('anime-detail',['title'=>'Anime Detail','anime'=>$anime]);
     }
+     // EPISODE-SHOW
+     public function showEpisode($id){
+        $video = video::with('anime')->findOrFail($id);
+        return view('episode-detail',['title'=>'Detail Episode','video'=>$video]);
+    }
 }

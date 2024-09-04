@@ -53,3 +53,5 @@ Route::get('/',[HomeController::class,'index']);
 
 //ANIME-DETAIL
 Route::get('/anime-detail/{id}',[HomeController::class,'show']);
+//EPISODE-DETAIL
+Route::get('episode-detail/{id}',[HomeController::class,'showEpisode']);
