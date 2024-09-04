@@ -19,23 +19,23 @@ class DashboardController extends Controller
         return view('admin.dashboard',['title'=>'Home','animes'=>$animes,'videos'=>$videos]);
     }
 
-    // ANIME
+    // ANIME-LIST
     public  function daftarAnime(Request $request){
         $keyword = $request->keywords;
         
         $animes = anime::orderBy('id','DESC')->where('name','LIKE','%'.$keyword.'%')->orWhere('status','LIKE','%'.$keyword.'%')->paginate(10);
         return view('admin.daftar-anime',['title'=>'Daftar Anime','animes'=>$animes]);
     }
-    // Show ANIME
+    // ANIME-SHOW
     public function showAnime($id){
         $anime = anime::with('videos')->findOrFail($id);
         return view('admin.anime-detail',['title'=>'Anime Detail','anime'=>$anime]);
     }
-    //add-ANIME
+    // ANIME-ADD
     public function createAnime(){
         return view('admin.anime-add',['title'=>"Add New Anime"]);
     }
-    //store-ANIME
+    // ANIME-STORE
     public function storeAnime(animeStoreRequest $request){
         //default nameImage kosong
         $nameImage=null;
@@ -63,12 +63,12 @@ class DashboardController extends Controller
         //redirect ke dashboard daftar anime
        return redirect('/dashboard/daftar-anime');
     }
-    //edit-ANIME
+    // ANIME-EDIT
     public function editAnime($id){
         $anime = anime::findOrFail($id);
         return view('admin.anime-edit',['title'=>'Edit Anime','anime'=>$anime]);
     }
-    //update-ANIME
+    // ANIME-UPDATE
     public function updateAnime(Request $request,$id){
         $nameImage = $request->imagebawaan;
 
@@ -91,7 +91,7 @@ class DashboardController extends Controller
 
         return redirect('/dashboard/daftar-anime');
     }
-    //delete-ANIME
+    // ANIME-DELETE
     public function dropAnime(Request $request,$id){
         $drop = anime::findOrFail($id)->delete();
         if ($drop) {
@@ -101,18 +101,24 @@ class DashboardController extends Controller
         //redirect
         return redirect('/dashboard/daftar-anime');
     }
+    // ANIME-TRASHED
+    public function animeTrashed(){
+        $animes = anime::onlyTrashed()->paginate(10);
+        return view('admin.anime-trashed',['title'=>'Anime Trashed','animes'=>$animes]);
+    }
 
-    //SHOW EPISODE
+
+    // EPISODE-SHOW
     public function daftarEpisode(){
          $videos = video::with('anime')->paginate(10);
          return view('admin.daftar-episode',['title'=>'Daftar Episode','videos'=>$videos]);
     }
-    //EPISODE-ADD
+    // EPISODE-ADD
     public function createEpisode(){
          $animes = anime::get(['id','name']);
          return view('admin.episode-add',['title'=>'Add New Episode','animes'=>$animes]);
     }
-    //EPISODE-edit
+    // EPISODE-STORE
     public function storeEpisode(Request $request){
         $store = video::create($request->all());
         if ($store) {
@@ -122,13 +128,13 @@ class DashboardController extends Controller
         
         return redirect('/dashboard/daftar-anime');
     }
-    //EPISODE-edit
+    //EPISODE-EDIT
     public function editEpisode($id){
         $video = video::findOrFail($id);
         $animes = anime::get(['id','name']);
         return view('admin.episode-edit',['title'=>'Edit Episode','video'=>$video,'animes'=>$animes]);
     }
-    //EPISODE-update
+    //EPISODE-UPDATE
     public function updateEpisode(Request $request,$id){
         $video = video::findOrFail($id)->update($request->all());
         
@@ -140,7 +146,7 @@ class DashboardController extends Controller
         return redirect('/dashboard/daftar-episode');
     }
 
-    //EPISODE DELETE 
+    //EPISODE-DELETE 
     public function dropEpisode(Request $request ,$id){
         $drop = video::findOrFail($id)->delete();
         if ($drop) {

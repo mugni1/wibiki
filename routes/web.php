@@ -17,18 +17,20 @@ Route::get('/dashboard',[DashboardController::class,'index'])->middleware('auth'
 
 // ANIMEEEEEEEEEEEEEEEEEEE
 Route::get('/dashboard/daftar-anime',[DashboardController::class,'daftarAnime'])->middleware('auth');
-//show-detail-ANIME
+//ANIME-SHOW
 Route::get('/dashboard/anime-detail/{id}',[DashboardController::class,'showAnime']);
-//add-ANIME
+//anime-ADD
 Route::get('/dashboard/anime-add',[DashboardController::class,'createAnime']);
-//store-ANIME
+//anime-STORE
 Route::post('/dashboard/anime-add/store',[DashboardController::class,'storeAnime']);
-//edit ANIME
+//anime EDIT
 Route::get('/dashboard/anime-edit/{id}',[DashboardController::class,'editAnime']);
-//update-ANIME
+//anime-UPDATE
 Route::put('/dashboard/anime-update/{id}',[DashboardController::class,'updateAnime']);
-//delete-ANIME
+//anime-DELETE
 Route::delete('/dashboard/anime-delete/{id}',[DashboardController::class,'dropAnime']);
+//anime-TRASHED
+Route::get('/dashboard/anime-trashed',[DashboardController::class,'animeTrashed']);
 
 //EPISODEEEEEEEEEEEEEEEEEE
 Route::get('/dashboard/daftar-episode',[DashboardController::class,'daftarEpisode']);
@@ -40,8 +42,6 @@ Route::post('/dashboard/episode-add/store',[DashboardController::class,'storeEpi
 Route::get('/dashboard/episode-edit/{id}',[DashboardController::class,'editEpisode']);
 //episode-UPDATE
 Route::put('/dashboard/episode-update/{id}',[DashboardController::class,'updateEpisode']);
-
-
 //episode-DELETE
 Route::delete('/dashboard/video-delete/{id}',[DashboardController::class,'dropEpisode']);
 
