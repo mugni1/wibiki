@@ -1,5 +1,5 @@
-<nav class=" w-full h-20 bg-emerald-600 fixed top-0 z-50">
-    <div class=" h-full w-full px-5 container mx-auto flex justify-between items-center">
+<nav class=" w-full h-20 fixed top-0 z-50 shadow-md bg-slate-700 bg-opacity-50">
+    <div class=" h-full w-full px-5 container mx-auto flex justify-between items-center backdrop-blur-sm ">
         {{-- brand --}}
         <div class=" flex justify-start w-2/12">
             <div class="font-bold text-2xl  text-white">
@@ -41,11 +41,11 @@
 
         {{-- contac us pc --}}
         <div class=" hidden md:flex justify-end w-2/12">
-            <div class=" bg-white hover:bg-slate-300  hover:scale-105 transition-all shadow-md text-emerald-600 py-1 px-5 rounded-md font-semibold">
+            <div class=" bg-white hover:bg-slate-300  hover:scale-105 transition-all shadow-md text-slate-600 py-1 px-5 rounded-md font-semibold">
                 @if(Auth::user())
                 <a href="/dashboard">Dashboard</a>
                 @else
-                <a href="/login">LOGIN</a>
+                <a href="/login">Contac US</a>
                 @endif
             </div>
         </div>

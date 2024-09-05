@@ -26,11 +26,7 @@
                         {{-- card_body --}}
                         <div class=" w-full flex flex-wrap pt-2 pb-4 px-2 h-1/6">
                             <h1 class=" font-bold text-slate-700 text-base text-nowrap text-ellipsis overflow-x-hidden mb-2">{{ $anime->name }}</h1>
-                            @if( $anime->status == 'Completed')
-                            <h1 class=" w-full font-semibold py-1 px-2 text-center text-green-700 bg-green-400 rounded-full shadow-md">{{ $anime->status }}</h1>
-                            @elseif( $anime->status == "Ongoing")
-                            <h1 class=" w-full font-semibold py-1 px-2 text-center text-red-700 bg-red-400 rounded-full shadow-md">{{ $anime->status }}</h1>
-                            @endif
+                            <h1 class=" w-full font-semibold py-1 px-2 text-center text-slate-500  rounded-full border">{{ $anime->status }}</h1>
                         </div>
                         {{-- end card_body --}}
                     </div>
