@@ -10,7 +10,8 @@
         {{-- cover anime --}}
         {{-- Informasi --}}
         <div class=" w-full md:w-1/2  xl:w-8/12 text-base text-justify">
-            <h1 class=" text-2xl font-bold pb-5 text-slate-800">{{ $anime->name }}</h1>
+            <h1 class=" text-2xl font-bold pb-2 mb-2 text-slate-800 border-b">{{ $anime->name }}</h1>
+            {{-- Informasi mode tablet dan dekstop --}}
             <table class="font-bold hidden md:block text-slate-800 mb-5">
                 <tr>
                     <td class="pe-5">Status</td>
@@ -29,22 +30,25 @@
                     <td>: <span class="ms-2">{{ $anime->producer }}</span></td>
                 </tr>
             </table>
+            {{-- Informasi mode dekstop --}}
+            {{-- Informasi di mode HP --}}
             <div class="md:hidden w-full flex flex-wrap">
                 <span class=" w-full font-bold text-slate-700 text-lg">Status</span>
                 @if($anime->status == "Completed")
-                <span> <span class=" text-emerald-600 font-semibold">{{ $anime->status }}</span></span>
+                <span> <span class=" text-teal-600 font-semibold">{{ $anime->status }}</span></span>
                 @else
                 <span> <span class=" text-red-600 ">{{ $anime->status }}</span></span>
                 @endif
             </div>
             <div class="md:hidden w-full flex flex-wrap">
-                <span class=" w-full font-bold text-slate-700 text-lg">Studio</span>
-                <span> <span class="font-semibold">{{ $anime->studio }}</span></span>
+                <span class=" w-full font-bold text-slate-800 text-lg">Studio</span>
+                <span> <span class="font-semibold text-slate-600">{{ $anime->studio }}</span></span>
             </div>
             <div class="md:hidden w-full flex flex-wrap mb-5">
-                <span class=" w-full font-bold text-slate-700 text-lg">Producer</span>
-                <span> <span class="font-semibold ">{{ $anime->producer }}</span></span>
+                <span class=" w-full font-bold text-slate-800 text-lg">Producer</span>
+                <span> <span class="font-semibold text-slate-600">{{ $anime->producer }}</span></span>
             </div>
+            {{--end Informasi di mode HP --}}
             <h1 class=" font-bold text-xl pb-3 text-slate-800">Deskirpsi</h1>
             <p class=" text-slate-500">{{ $anime->description }}</p>
         </div>
@@ -58,18 +62,22 @@
         {{-- TRAILER < MD --}}
         <div class=" md:hidden block w-full mb-4">
             <h1 class=" font-bold w-full text-2xl mb-3">Trailer</h1>
-            <iframe class="w-full rounded-md" height="210" src="https://www.youtube.com/embed/62r_G9bEPlU?si=K7ADzoNDpBnUczqX&amp;start=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            @if($anime->trailer != null)
+            <iframe class="w-full rounded-md" height="210" src="{{ $anime->trailer }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            @else
+            <h1 class=" font-semibold py-2 p-3 bg-red-600  rounded-md my-2 w-full text-white text-center ring-2 ring-red-800">Tidak ada trailer</h1>
+            @endif
         </div>
         {{-- // PLAY EPISODE --}}
         <div class="w-full md:w-1/2 mb-4">
             <h1 class=" font-bold w-full text-2xl mb-2">Play Episode</h1>
             @if($anime->videos->count() == 0)
-            <h1 class=" font-semibold py-2 p-3 bg-red-600  rounded-md my-2 w-full text-white text-center ring-2 ring-red-800">Belum Ada Episode</h1>
+            <h1 class=" font-semibold py-2 my-3 bg-red-600  rounded-md w-full text-white text-center ring-2 ring-red-800">Belum Ada Episode</h1>
             @endif
             <ul class=" w-full md:pe-5 text-white">
                 @foreach ($anime->videos as $episode)
-                <li class=" py-1 w-full">
-                    <a class=" w-full py-2 px-2 rounded-md bg-green-600 flex items-center justify-between" href="/episode-detail/{{ $episode->id }}">
+                <li class=" w-full mb-2">
+                    <a class=" w-full py-2 px-2 rounded-md bg-teal-600 flex items-center justify-between" href="/episode-detail/{{ $episode->id }}">
                         <span>
                             Episode-{{ $episode->episode }} | {{ $episode->name }}
                         </span>
@@ -84,7 +92,11 @@
         {{-- TRAILER MD + --}}
         <div class=" hidden md:block md:w-1/2">
             <h1 class=" font-bold w-full text-2xl mb-3">Trailer</h1>
-            <iframe class="w-full rounded-md" height="380" src="https://www.youtube.com/embed/62r_G9bEPlU?si=K7ADzoNDpBnUczqX&amp;start=3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            @if($anime->trailer != null)
+            <iframe class="w-full rounded-md" height="360" src="{{ $anime->trailer }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            @else
+            <h1 class=" font-semibold py-2 my-3 bg-red-600  rounded-md w-full text-white text-center ring-2 ring-red-800">Tidak ada trailer</h1>
+            @endif
         </div>
     </section>
     {{--END EPISODE --}}

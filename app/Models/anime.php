@@ -16,6 +16,7 @@ class anime extends Model
         'producer',
         'description',
         'image',
+        'trailer'
     ];
 
     /**

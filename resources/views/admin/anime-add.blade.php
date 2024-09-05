@@ -38,6 +38,10 @@
                     <input required type="file" name="image" id="image" class="py-2 px-2 shadow-md w-full rounded-md border outline-none" placeholder="Masukan di sini">
                 </div>
                 <div class=" w-full flex flex-wrap py-2">
+                    <label for="trailer" class="font-semibold w-full">Trailer</label>
+                    <input required type="text" name="trailer" id="trailer" class="py-1 px-2 shadow-md w-full rounded-md border outline-none" placeholder="Masukan di sini">
+                </div>
+                <div class=" w-full flex flex-wrap py-2">
                     <label for="description" class="font-semibold w-full  mb-1">Masukan deskripsi anime</label>
                     <textarea class="border px-2 py-2 outline-none w-full rounded-md shadow-md" name="description" id="" cols="30" rows="8"></textarea>
                 </div>
