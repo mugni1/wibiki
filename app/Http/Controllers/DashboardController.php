@@ -6,6 +6,7 @@ use App\Http\Requests\animeStoreRequest;
 use App\Models\anime;
 use App\Models\video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 use PhpParser\Node\Expr\FuncCall;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
@@ -109,9 +110,15 @@ class DashboardController extends Controller
 
 
     // EPISODE
-    public function daftarEpisode(){
-         $videos = video::with('anime')->paginate(10);
-         return view('admin.daftar-episode',['title'=>'Daftar Episode','videos'=>$videos]);
+    public function daftarEpisode(Request $request){
+        $keyword = $request->keywords;
+        $videos = video::with('anime')
+        ->whereHas('anime',function ($query) use ($keyword){
+            $query->where('name','LIKE','%'.$keyword.'%');
+        })
+        ->orWhere('name','LIKE','%'.$keyword.'%')
+        ->paginate(10);
+        return view('admin.daftar-episode',['title'=>'Daftar Episode','videos'=>$videos]);
     }
     // EPISODE-SHOW
     public function showEpisode($id){
