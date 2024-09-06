@@ -1,61 +1,68 @@
 <x-main-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    {{-- Gambar dan Iformasi anime --}}
-    <section class="w-full px-5 py-5 flex flex-wrap mt-24">
-        {{-- cover anime --}}
-        <div class=" w-full pb-5  md:w-1/2  xl:w-4/12">
-            <img class=" w-full md:w-11/12 xl:w-8/12 rounded-lg shadow-lg" src="{{ asset('storage/img/' . $anime->image) }}" alt="">
-        </div>
-        {{-- cover anime --}}
-        {{-- Informasi --}}
-        <div class=" w-full md:w-1/2  xl:w-8/12 text-base text-justify">
-            <h1 class=" text-2xl font-bold pb-2 mb-2 text-slate-800 border-b">{{ $anime->name }}</h1>
-            {{-- Informasi mode tablet dan dekstop --}}
-            <table class="font-bold hidden md:block text-slate-800 mb-5">
-                <tr>
-                    <td class="pe-5">Status</td>
+    {{-- CONTAINER INFROMASI ANIME --}}
+    <section class=" w-full  min-h-screen  py-24">
+        {{-- BACGROUND --}}
+        <section class=" w-full h-full absolute top-0 z-0 bg-no-repeat bg-cover bg-center" style="background-image: url('{{ asset('storage/img/'. $anime->image) }}')"></section>
+        <section class=" w-full absolute top-0 z-10  h-full  bg-gradient-to-b  from-transparent  to-white backdrop-blur-sm"></section>
+        {{-- END BACKGROUND --}}
+        {{-- Gambar dan Iformasi anime --}}
+        <section class="w-full px-5 flex flex-wrap relative z-20">
+            {{-- cover anime --}}
+            <div class=" w-full pb-5  md:w-1/2  xl:w-4/12">
+                <img class=" w-full md:w-11/12 xl:w-8/12 rounded-lg shadow-lg shadow-slate-600" src="{{ asset('storage/img/' . $anime->image) }}" alt="">
+            </div>
+            {{-- cover anime --}}
+            {{-- Informasi --}}
+            <div class=" w-full md:w-1/2  xl:w-8/12 text-base text-justify rounded-md md:bg-slate-800 mt-5 md:mt-0 md:p-5 md:bg-opacity-60">
+                <h1 class=" text-2xl font-bold pb-2 mb-2 text-black md:text-white border-b border-black md:border-white">{{ $anime->name }}</h1>
+                {{-- Informasi mode tablet dan dekstop --}}
+                <table class="font-bold hidden md:block text-white mb-5">
+                    <tr>
+                        <td class="pe-5">Status</td>
+                        @if($anime->status == "Completed")
+                        <td>: <span class="ms-2 rounded-md text-emerald-600 ">{{ $anime->status }}</span></td>
+                        @else
+                        <td>: <span class="ms-2 rounded-md text-red-600 ">{{ $anime->status }}</span></td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <td class="pe-5">Studio</td>
+                        <td>: <span class="ms-2">{{ $anime->studio }}</span></td>
+                    </tr>
+                    <tr>
+                        <td class="pe-5">Producer</td>
+                        <td>: <span class="ms-2">{{ $anime->producer }}</span></td>
+                    </tr>
+                </table>
+                {{-- Informasi mode dekstop --}}
+                {{-- Informasi di mode HP --}}
+                <div class="md:hidden w-full flex flex-wrap">
+                    <span class=" w-full font-bold text-slate-700 text-lg">Status</span>
                     @if($anime->status == "Completed")
-                    <td>: <span class="ms-2 rounded-md text-emerald-600 ">{{ $anime->status }}</span></td>
+                    <span> <span class=" text-teal-600 font-semibold">{{ $anime->status }}</span></span>
                     @else
-                    <td>: <span class="ms-2 rounded-md text-red-600 ">{{ $anime->status }}</span></td>
+                    <span> <span class=" text-red-600 ">{{ $anime->status }}</span></span>
                     @endif
-                </tr>
-                <tr>
-                    <td class="pe-5">Studio</td>
-                    <td>: <span class="ms-2">{{ $anime->studio }}</span></td>
-                </tr>
-                <tr>
-                    <td class="pe-5">Producer</td>
-                    <td>: <span class="ms-2">{{ $anime->producer }}</span></td>
-                </tr>
-            </table>
-            {{-- Informasi mode dekstop --}}
-            {{-- Informasi di mode HP --}}
-            <div class="md:hidden w-full flex flex-wrap">
-                <span class=" w-full font-bold text-slate-700 text-lg">Status</span>
-                @if($anime->status == "Completed")
-                <span> <span class=" text-teal-600 font-semibold">{{ $anime->status }}</span></span>
-                @else
-                <span> <span class=" text-red-600 ">{{ $anime->status }}</span></span>
-                @endif
+                </div>
+                <div class="md:hidden w-full flex flex-wrap">
+                    <span class=" w-full font-bold text-slate-800 text-lg">Studio</span>
+                    <span> <span class="font-semibold text-slate-600">{{ $anime->studio }}</span></span>
+                </div>
+                <div class="md:hidden w-full flex flex-wrap mb-5">
+                    <span class=" w-full font-bold text-slate-800 text-lg">Producer</span>
+                    <span> <span class="font-semibold text-slate-600">{{ $anime->producer }}</span></span>
+                </div>
+                {{--end Informasi di mode HP --}}
+                <h1 class=" font-bold text-xl pb-3 md:text-white text-black">Deskirpsi</h1>
+                <p class="md:text-slate-300 text-black">{{ $anime->description }}</p>
             </div>
-            <div class="md:hidden w-full flex flex-wrap">
-                <span class=" w-full font-bold text-slate-800 text-lg">Studio</span>
-                <span> <span class="font-semibold text-slate-600">{{ $anime->studio }}</span></span>
-            </div>
-            <div class="md:hidden w-full flex flex-wrap mb-5">
-                <span class=" w-full font-bold text-slate-800 text-lg">Producer</span>
-                <span> <span class="font-semibold text-slate-600">{{ $anime->producer }}</span></span>
-            </div>
-            {{--end Informasi di mode HP --}}
-            <h1 class=" font-bold text-xl pb-3 text-slate-800">Deskirpsi</h1>
-            <p class=" text-slate-500">{{ $anime->description }}</p>
-        </div>
-        {{-- end ifromasi anime --}}
+            {{-- end ifromasi anime --}}
+        </section>
+        {{--End Gambar dan Iformasi anime --}}
     </section>
-    {{--End Gambar dan Iformasi anime --}}
-
+    {{-- end CONTAINER INFROMASI ANIME --}}
 
     {{-- EPISODE --}}
     <section class="w-full px-5 py-5 flex flex-wrap">

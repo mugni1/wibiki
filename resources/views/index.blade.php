@@ -1,8 +1,15 @@
 <x-main-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
+    <section class=" w-full mt-24">
+        <form action="" method="get" class=" w-full flex  container mx-auto px-5">
+            <input type="text" name="keyword" class=" w-11/12 border py-1 px-2">
+            <button class=" w-1/12 border bg-slate-600 font-bold text-white rounded-md">Search</button>
+        </form>
+    </section>
+
     <section class=" w-full">
-        <div class=" container mx-auto mt-24 flex flex-wrap">
+        <div class=" container mx-auto flex flex-wrap">
             {{-- JUDUL --}}
             <h1 class="font-bold text-xl w-full mb-3 px-5">Anime Terbaru</h1>
             {{-- END JUDUL --}}
