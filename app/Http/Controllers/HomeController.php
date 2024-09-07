@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+        $keyword = $request->keyword;
+        //episdoe teerbaru
         $videos = video::with('anime')->orderBy('id','DESC')->paginate(10);
-        $animes = anime::orderBy('id','DESC')->paginate(16);
+        //anime terbaru
+        $animes = anime::orderBy('id','DESC')
+        ->where('name','LIKE','%'.$keyword.'%')
+        ->paginate(16);
         return view('index',['title'=>"Hone", 'videos'=>$videos,'animes'=>$animes]);
     }
 
