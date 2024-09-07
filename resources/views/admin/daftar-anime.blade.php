@@ -101,7 +101,7 @@
 
         {{-- NEXT AND PREVIOUS --}}
         <div class=" w-full flex flex-wrap justify-between items-center my-5 py-2">
-            <div class=" w-full W md:w-4/12 font-semibold mb-5">
+            <div class=" w-full  md:w-4/12 font-semibold mb-5">
                 {{ $animes->withQueryString()->links() }}
             </div>
             <div class=" w-full md:w-4/12 font-semibold">
