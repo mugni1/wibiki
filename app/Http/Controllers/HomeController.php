@@ -15,7 +15,7 @@ class HomeController extends Controller
         //anime terbaru
         $animes = anime::orderBy('id','DESC')
         ->where('name','LIKE','%'.$keyword.'%')
-        ->paginate(16);
+        ->paginate(8);
         return view('index',['title'=>"Hone", 'videos'=>$videos,'animes'=>$animes]);
     }
 

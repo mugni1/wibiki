@@ -96,10 +96,10 @@
             </ul>
         </div>
         {{-- TRAILER MD + --}}
-        <div class=" hidden md:block md:w-1/2">
+        <div class=" hidden md:block md:w-5/12 mx-auto">
             <h1 class=" font-bold w-full text-2xl mb-3">Trailer</h1>
             @if($anime->trailer != null)
-            <iframe class="w-full rounded-md" height="360" src="{{ $anime->trailer }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe class="w-full mx-auto rounded-md" height="360" src="{{ $anime->trailer }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             @else
             <h1 class=" font-semibold py-2 my-3 bg-red-600  rounded-md w-full text-white text-center ring-2 ring-red-800">Tidak ada trailer</h1>
             @endif
