@@ -10,6 +10,7 @@
         </div>
     </section>
 
+    {{-- Anime Terbaru --}}
     <section class=" w-full">
         <div class=" container mx-auto flex flex-wrap">
             {{-- JUDUL --}}
@@ -46,7 +47,7 @@
             </div>
         </div>
     </section>
-
+    {{-- End anime terbaru --}}
 
     {{-- NEXT AND PREVIOUS --}}
     <div class=" w-full container mx-auto px-5 flex flex-wrap justify-between items-center my-5 py-2">
