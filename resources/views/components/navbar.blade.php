@@ -1,4 +1,4 @@
-<nav class=" w-full h-20 fixed top-0 z-50 shadow-md bg-slate-700 bg-opacity-50">
+<nav id="navbar" class=" hidden w-full h-20 fixed top-0 z-50 shadow-md bg-slate-700 bg-opacity-50">
     <div class=" h-full w-full px-5 container mx-auto flex justify-between items-center backdrop-blur-sm ">
         {{-- brand --}}
         <div class=" flex justify-start w-2/12">

@@ -5,7 +5,8 @@
     <section class=" w-full">
         {{-- BACGROUND --}}
         <section class=" w-full h-full absolute top-0 z-0 bg-no-repeat bg-cover bg-center" style="background-image: url('{{ asset('storage/img/'. $anime->image) }}')"></section>
-        <section class=" w-full absolute top-0 z-10  h-full  bg-gradient-to-b  from-transparent  to-white backdrop-blur-sm"></section>
+        <section class=" w-full absolute top-0 z-10  h-full  bg-gradient-to-b  from-transparent  to-white backdrop-blur-sm">
+        </section>
         {{-- END BACKGROUND --}}
         {{-- Gambar dan Iformasi anime --}}
         <section class="w-full min-h-screen px-5 flex flex-wrap items-center relative z-20 ">
@@ -16,7 +17,8 @@
             {{-- cover anime --}}
             {{-- Informasi --}}
             <div class=" w-full md:w-9/12  xl:w-8/12 text-base text-justify rounded-md md:bg-slate-800 mt-5 md:mt-0 md:p-5 md:bg-opacity-60">
-                <h1 class=" text-2xl font-bold pb-2 mb-2 text-black md:text-white border-b border-black md:border-white">{{ $anime->name }}</h1>
+                <h1 class=" text-2xl font-bold pb-2 mb-2 text-black md:text-white border-b border-black md:border-white">
+                    {{ $anime->name }}</h1>
                 {{-- Informasi mode tablet dan dekstop --}}
                 <table class="font-bold hidden md:block text-white md:text-sm xl:text-lg">
                     <tr>
@@ -71,14 +73,16 @@
             @if($anime->trailer != null)
             <iframe class="w-full rounded-md" height="210" src="{{ $anime->trailer }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             @else
-            <h1 class=" font-semibold py-2 p-3 bg-red-600  rounded-md my-2 w-full text-white text-center ring-2 ring-red-800">Tidak ada trailer</h1>
+            <h1 class=" font-semibold py-2 p-3 bg-red-600  rounded-md my-2 w-full text-white text-center ring-2 ring-red-800">
+                Tidak ada trailer</h1>
             @endif
         </div>
         {{-- // PLAY EPISODE --}}
         <div class="w-full md:w-1/2 mb-4">
             <h1 class=" font-bold w-full text-2xl mb-2">Play Episode</h1>
             @if($anime->videos->count() == 0)
-            <h1 class=" font-semibold py-2 my-3 bg-red-600  rounded-md w-full text-white text-center ring-2 ring-red-800">Belum Ada Episode</h1>
+            <h1 class=" font-semibold py-2 my-3 bg-red-600  rounded-md w-full text-white text-center ring-2 ring-red-800">
+                Belum Ada Episode</h1>
             @endif
             <ul class=" w-full md:pe-5 text-white">
                 @foreach ($anime->videos as $episode)
@@ -101,9 +105,27 @@
             @if($anime->trailer != null)
             <iframe class="w-full mx-auto rounded-md" height="360" src="{{ $anime->trailer }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             @else
-            <h1 class=" font-semibold py-2 my-3 bg-red-600  rounded-md w-full text-white text-center ring-2 ring-red-800">Tidak ada trailer</h1>
+            <h1 class=" font-semibold py-2 my-3 bg-red-600  rounded-md w-full text-white text-center ring-2 ring-red-800">
+                Tidak ada trailer</h1>
             @endif
         </div>
     </section>
     {{--END EPISODE --}}
 </x-main-layout>
+
+{{-- Script --}}
+<script>
+    window.onscroll = function() {
+        const navbar = document.getElementById('navbar');
+        const fixedNav = navbar.offsetTop;
+        if (window.pageYOffset > fixedNav) {
+            navbar.classList.remove('hidden')
+            navbar.classList.add('block');
+        } else {
+            navbar.classList.add('hidden')
+            navbar.classList.remove('block');
+        }
+    }
+
+</script>
+{{-- END SCRIPT --}}
