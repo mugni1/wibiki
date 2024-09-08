@@ -23,7 +23,7 @@
                     Beranda
                 </a>
             </li>
-            <li><a class="flex hover:bg-white hover:text-black transition-all duration-500 py-1 px-4 rounded-md" href="/list-anime">List Anime</a></li>
+            <li><a class="flex hover:bg-white hover:text-black transition-all duration-500 py-1 px-4 rounded-md" href="/daftar-anime">List Anime</a></li>
             <li class="relative">
                 <button id="kategori" class=" ring-white active:bg-slate-500 hover:bg-white hover:text-black transition-all duration-500 py-1 ps-4 pe-3 rounded-md cursor-pointer flex items-center">
                     Kategori
