@@ -9,3 +9,11 @@
         </div>
     </section>
 </x-main-layout>
+
+{{-- Script --}}
+<script>
+    const navbar = document.getElementById('navbar');
+    navbar.classList.remove('hidden')
+
+</script>
+{{-- END SCRIPT --}}

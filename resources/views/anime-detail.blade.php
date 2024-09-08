@@ -11,15 +11,15 @@
         {{-- Gambar dan Iformasi anime --}}
         <section class="w-full min-h-screen px-5 flex flex-wrap items-center relative z-20 ">
             {{-- cover anime --}}
-            <div class=" w-full pb-5 md:pb-0  md:w-3/12  xl:w-4/12">
+            <div class=" w-full pb-5 md:pb-0  md:w-3/12  xl:w-4/12 mt-5 md:mt-0">
                 <img class=" w-full md:w-10/12 xl:w-8/12 rounded-lg shadow-lg shadow-slate-600" src="{{ asset('storage/img/' . $anime->image) }}" alt="">
             </div>
             {{-- cover anime --}}
             {{-- Informasi --}}
             <div class=" w-full md:w-9/12  xl:w-8/12 text-base text-justify rounded-md md:bg-slate-800 mt-5 md:mt-0 md:p-5 md:bg-opacity-60">
-                <h1 class=" text-2xl font-bold pb-2 mb-2 text-black md:text-white border-b border-black md:border-white">
-                    {{ $anime->name }}</h1>
-                {{-- Informasi mode tablet dan dekstop --}}
+                <h1 class=" text-2xl font-bold pb-2 mb-2 text-black md:text-white border-b border-black md:border-white">{{ $anime->name }}</h1>
+
+                {{-- infromasi for dekstop  --}}
                 <table class="font-bold hidden md:block text-white md:text-sm xl:text-lg">
                     <tr>
                         <td class="pe-5">Status</td>
@@ -38,8 +38,9 @@
                         <td>: <span class="ms-2">{{ $anime->producer }}</span></td>
                     </tr>
                 </table>
-                {{-- Informasi mode dekstop --}}
-                {{-- Informasi di mode HP --}}
+                {{-- infromasi for dekstop  --}}
+
+                {{-- infromasi for HP  --}}
                 <div class="md:hidden w-full flex flex-wrap">
                     <span class=" w-full font-bold text-slate-700 text-lg">Status</span>
                     @if($anime->status == "Completed")
@@ -56,10 +57,11 @@
                     <span class=" w-full font-bold text-slate-800 text-lg">Producer</span>
                     <span> <span class="font-semibold text-slate-600">{{ $anime->producer }}</span></span>
                 </div>
-                {{--end Informasi di mode HP --}}
+                {{--end Informasi for HP --}}
+
                 <p class="md:text-slate-300 text-black text-sm xl:text-base">{{ $anime->description }}</p>
             </div>
-            {{-- end ifromasi anime --}}
+            {{-- end ifromasi --}}
         </section>
         {{--End Gambar dan Iformasi anime --}}
     </section>
