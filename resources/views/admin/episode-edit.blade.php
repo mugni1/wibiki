@@ -7,6 +7,7 @@
         <div class=" md:w-1/2 w-full container mx-auto ">
             <form action="/dashboard/episode-update/{{ $video->id }}" method="POST" enctype="multipart/form-data" class=" w-full flex flex-wrap">
                 @csrf
+                <input type="hidden" name="oldthumbnail" value="{{ $video->thumbnail }}">
                 @method('PUT')
                 <div class=" w-full flex flex-wrap py-2">
                     <label for="name" class="font-semibold w-full">Masukan Nama Episode</label>
@@ -15,6 +16,10 @@
                 <div class=" w-full flex flex-wrap py-2">
                     <label for="episode" class="font-semibold w-full">Episode ke</label>
                     <input required type="number" name="episode" id="episode" class="py-1 px-2 shadow-md w-full rounded-md border outline-none" placeholder="Masukan di sini" value="{{ $video->episode }}">
+                </div>
+                <div class=" w-full flex flex-wrap py-2">
+                    <label for="thumbnail" class="font-semibold w-full">Thumbnail</label>
+                    <input type="file" name="thumbnail" id="thumbnail" class="py-1 px-2 shadow-md w-full rounded-md border outline-none">
                 </div>
                 <div class=" w-full flex flex-wrap py-2">
                     <label for="api" class="font-semibold w-full">Maskan Api / Link Stream</label>

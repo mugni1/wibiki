@@ -11,11 +11,11 @@ class HomeController extends Controller
     public function index(Request $request){
         $keyword = $request->keyword;
         //episdoe teerbaru
-        $videos = video::with('anime')->orderBy('id','DESC')->paginate(10);
+        $videos = video::with('anime')->orderBy('id','DESC')->simplePaginate(6);
         //anime terbaru
         $animes = anime::orderBy('id','DESC')
         ->where('name','LIKE','%'.$keyword.'%')
-        ->paginate(12);
+        ->simplePaginate(12);
         return view('index',['title'=>"Home", 'videos'=>$videos,'animes'=>$animes]);
     }
 

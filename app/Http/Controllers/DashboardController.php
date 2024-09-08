@@ -160,7 +160,18 @@ class DashboardController extends Controller
     }
     //EPISODE-UPDATE
     public function updateEpisode(Request $request,$id){
-        $video = video::findOrFail($id)->update($request->all());
+        $nameThumbnail = $request->oldthumbnail;
+        if ($request->file('thumbnail')) {
+            $nameEpisode = strtolower(str_replace(' ','', $request->name));
+            $ekstensiThumbnail = $request->file('thumbnail')->getClientOriginalExtension();
+            $nameThumbnail = $nameEpisode. '-' . now()->timestamp . '.' . $ekstensiThumbnail;
+            $request->file('thumbnail')->storeAs('thumbnail', $nameThumbnail);
+        }
+
+        $dataEpisode = $request->all();
+        $dataEpisode['thumbnail'] = $nameThumbnail;
+
+        $video = video::findOrFail($id)->update($dataEpisode);
         
         if ($video) {
             Session::flash('status','success');

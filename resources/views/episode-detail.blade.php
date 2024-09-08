@@ -4,9 +4,9 @@
     {{-- //STREAM --}}
     <section class="mt-24 w-full px-5 mb-5">
         {{-- Dekstop --}}
-        <iframe src="{{ $video->api }}" height="480" class=" w-full rounded-md hidden md:block" allow="autoplay"></iframe>
+        <iframe src="{{ $video->api }}" height="480" class=" w-full rounded-md hidden md:block" allow="autoplay" allowfullscreen></iframe>
         {{-- Mobile / Tablet --}}
-        <iframe src="{{ $video->api }}" height="280" class=" w-full rounded-md md:hidden" allow="autoplay"></iframe>
+        <iframe src="{{ $video->api }}" height="280" class=" w-full rounded-md md:hidden" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </section>
     {{-- //END STREAM --}}
 
@@ -24,10 +24,10 @@
     <section class=" mb-5 px-5 w-full flex flex-wrap">
         <h1 class=" w-full text-slate-800 font-semibold">Stream</h1>
         <div class=" w-full">
-            <button class=" py-1 shadow-md px-5 text-white bg-emerald-600 rounded-md">360p</button>
-            <button class=" py-1 shadow-md px-5 text-white bg-emerald-600 rounded-md">480p</button>
-            <button class=" py-1 shadow-md px-5 text-white bg-emerald-600 rounded-md">720p - HD</button>
-            <button class=" py-1 shadow-md px-5 text-white bg-emerald-600 rounded-md">1080p - FHD</button>
+            <button class=" py-1 mb-1 shadow-md px-5 text-white bg-emerald-600 rounded-md">360p</button>
+            <button class=" py-1 mb-1 shadow-md px-5 text-white bg-emerald-600 rounded-md">480p</button>
+            <button class=" py-1 mb-1 shadow-md px-5 text-white bg-emerald-600 rounded-md">720p - HD</button>
+            <button class=" py-1 mb-1 shadow-md px-5 text-white bg-emerald-600 rounded-md">1080p - FHD</button>
         </div>
     </section>
     {{-- END DOWNLOAD ANIME --}}
@@ -35,10 +35,10 @@
     <section class=" mb-5 px-5 w-full flex flex-wrap">
         <h1 class=" w-full text-slate-800 font-semibold">Download</h1>
         <div class=" w-full">
-            <button class=" py-1 shadow-md px-5 text-white bg-sky-600 rounded-md">360p</button>
-            <button class=" py-1 shadow-md px-5 text-white bg-sky-600 rounded-md">480p</button>
-            <button class=" py-1 shadow-md px-5 text-white bg-sky-600 rounded-md">720p - HD</button>
-            <button class=" py-1 shadow-md px-5 text-white bg-sky-600 rounded-md">1080p - FHD</button>
+            <button class=" py-1 mb-1 shadow-md px-5 text-white bg-sky-600 rounded-md">360p</button>
+            <button class=" py-1 mb-1 shadow-md px-5 text-white bg-sky-600 rounded-md">480p</button>
+            <button class=" py-1 mb-1 shadow-md px-5 text-white bg-sky-600 rounded-md">720p - HD</button>
+            <button class=" py-1 mb-1 shadow-md px-5 text-white bg-sky-600 rounded-md">1080p - FHD</button>
         </div>
     </section>
     {{-- END DOWNLOAD ANIME --}}
