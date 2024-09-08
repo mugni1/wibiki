@@ -132,7 +132,19 @@ class DashboardController extends Controller
     }
     // EPISODE-STORE
     public function storeEpisode(Request $request){
-        $store = video::create($request->all());
+        $nameThumbnail = null;
+        
+        if ($request->file('thumbnail')) {
+            $namaEpisode = strtolower(str_replace(' ','', $request->name));
+            $ekstensiThumbnail = $request->file('thumbnail')->getClientOriginalExtension();
+            $nameThumbnail = $namaEpisode . '-' . now()->timestamp . '.' . $ekstensiThumbnail;
+            $request->file('thumbnail')->storeAs('thumbnail',$nameThumbnail);
+        }
+
+        $dataEpisode = $request->all();
+        $dataEpisode['thumbnail'] = $nameThumbnail;
+
+        $store = video::create($dataEpisode);
         if ($store) {
             Session::flash('status','success');
             Session::flash('pesan',"Berhasil Menambah episode baru");

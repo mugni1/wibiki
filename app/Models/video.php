@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class video extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','episode','api','anime_id'];
+    protected $fillable = ['name','episode','thumbnail','api','anime_id'];
 
     /**
      * Get the user that owns the video
