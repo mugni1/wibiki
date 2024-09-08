@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 //login 
-Route::get('/login',[AuthController::class,'login'])->name('login');
+Route::get('/login',[AuthController::class,'login'])->name('login')->middleware('guest');
 //Auth
 Route::post('/login-auth',[AuthController::class,'auth']);
 //logout

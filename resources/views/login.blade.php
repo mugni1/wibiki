@@ -6,14 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     @vite(['resources/css/app.css','resources/js/app.js'])
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 </head>
-<body>
-    <section class="min-h-screen w-full flex justify-center items-center">
+<body class="poppins">
+    <section style="background-image: url('{{ asset('storage/image/bg-login.jpg') }}')" class="bg-cover min-h-screen w-full flex justify-center items-center">
         {{-- card --}}
-        <div class=" w-full md:w-3/12 px-5 mx-10 border shadow-xl rounded-md">
+        <div class=" w-full md:w-3/12 px-5 mx-10 border shadow-xl rounded-md backdrop-blur-sm">
             <div class="w-full my-5">
-                <h1 class=" font-bold text-center text-2xl">LOGIN</h1>
+                <h1 class=" font-bold text-center text-2xl text-white">LOGIN</h1>
             </div>
 
             {{-- SESSION FLASH SUCCES--}}
@@ -29,13 +32,13 @@
             <form class="w-full" action="login-auth" method="post">
                 @csrf
                 <div class=" w-full pb-4">
-                    <label for="email" class="font-bold text-slate-800 ">Masukan Email</label>
-                    <input class="py-1 px-2 rounded-md shadow-sm border w-full outline-none cursor-pointer" type="email" name="email" id="email" placeholder="Masukan di sini" required>
+                    <label for="email" class="font-bold text-white ">Masukan Email</label>
+                    <input class="py-1 px-2 rounded-md shadow-sm border w-full outline-none " type="email" name="email" id="email" placeholder="Masukan di sini" required>
                 </div>
                 <div class=" w-full pb-4">
-                    <label for="password" class="font-bold text-slate-800 ">Masukan Password</label>
+                    <label for="password" class="font-bold text-white ">Masukan Password</label>
                     <div class=" relative group">
-                        <input id="inputpw" class=" relative py-1 px-2 rounded-md shadow-sm border w-full outline-none cursor-pointer" type="password" name="password" id="password" placeholder="Masukan di sini" required>
+                        <input id="inputpw" class=" relative py-1 px-2 rounded-md shadow-sm border w-full outline-none " type="password" name="password" id="password" placeholder="Masukan di sini" required>
                         <div id="showpw" class="absolute top-0 bottom-0 right-0 cursor-pointer flex items-center px-2 border-s text-slate-600">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current h-5 w-5 top-2  right-2  ">
                                 <path d="M12 9a3.02 3.02 0 0 0-3 3c0 1.642 1.358 3 3 3 1.641 0 3-1.358 3-3 0-1.641-1.359-3-3-3z"></path>
@@ -45,8 +48,8 @@
                     </div>
                 </div>
                 <div class=" w-full pb-4">
-                    <button type="submit" class=" w-full py-1 shadow-sm text-white text-center bg-emerald-500 rounded-md font-bold text-base">Submit</button>
-                    <div class=" text-blue-600 w-full block text-center py-2 underline text-sm"><a href="/">Masuk sebagai user</a></d>
+                    <button type="submit" class=" w-full py-1 shadow-sm text-white text-center bg-teal-600 rounded-md font-bold text-base">Submit</button>
+                    <div class=" text-slate-600 w-full block text-center py-2 underline text-sm"><a href="/">Lanjutkan Sebagai Guest</a></d>
                     </div>
             </form>
         </div>
