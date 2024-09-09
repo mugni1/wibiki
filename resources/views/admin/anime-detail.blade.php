@@ -47,7 +47,7 @@
     <section class="w-full px-5 py-5 flex flex-wrap">
         <h1 class=" font-bold w-full text-2xl ">Episode</h1>
         @if($anime->videos->count() == 0)
-        <h1 class=" font-semibold py-2 p-3 bg-red-600  rounded-md my-2 w-full text-white text-center ring-2 ring-red-800">Belum Ada Episode</h1>
+        <h1 class=" font-semibold py-2 p-3 bg-red-600  rounded-md my-2 w-full text-white text-center ring-2 ring-red-800">Tidak ada episode</h1>
         @endif
         <ul class=" w-full md:w-1/2 text-white">
             @foreach ($anime->videos as $episode)
@@ -65,4 +65,18 @@
         </ul>
     </section>
     {{--END EPISODE --}}
+
+    {{-- TRAILER--}}
+    <section class=" px-5 w-full mb-4">
+        <h1 class=" font-bold w-full text-2xl mb-3">Trailer</h1>
+        @if($anime->trailer != null)
+        <iframe class=" hidden md:block w-full rounded-md" height="420" src="{{ $anime->trailer }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe class=" md:hidden w-full rounded-md" height="280" src="{{ $anime->trailer }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        @else
+        <h1 class=" font-semibold py-2 p-3 bg-red-600  rounded-md my-2 w-full text-white text-center ring-2 ring-red-800">
+            Tidak ada trailer
+        </h1>
+        @endif
+    </section>
+    {{-- END TRAILER --}}
 </x-admin-layout>
